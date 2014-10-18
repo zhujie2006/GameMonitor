@@ -1,0 +1,106 @@
+﻿<Window x:Class="GamePlayMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:control="clr-namespace:GamePlayMonitor.Control"
+        Loaded="MainWindow_OnLoaded" MouseDown="MainWindow_OnMouseDown"
+        Title="MainWindow" Height="600" Width="800" Style="{DynamicResource ShadowWinStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic.xaml"/>
+                <ResourceDictionary Source="Themes/WindowStyle.xaml"/>
+                <ResourceDictionary Source="Themes/Style.xaml"/>
+                <ResourceDictionary Source="Themes/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="Themes/TabControlStyle.xaml"/>
+                <ResourceDictionary Source="Themes/CheckBoxStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </Window.Resources>
+    <Border Style="{StaticResource WindowBorderStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- 标题栏 -->
+            <Grid Height="40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Width="32" Source="Images/main.png"/>
+                    <TextBlock x:Name="TextBlockTitle" Text="游戏助手" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Top">
+                    <Button x:Name="ButtonMinimize" Style="{StaticResource MinBtnStyle}" Click="ButtonMinimize_OnClick"/>
+                    <Button x:Name="ButtonClose" Style="{StaticResource CloseBtnStyle}" Click="ButtonClose_OnClick"/>
+                </StackPanel>
+
+            </Grid>
+            
+            <!-- 内容 -->
+            <TabControl x:Name="TabControlMain" Style="{StaticResource TabControlStyle}" Grid.Row="1">
+                <!-- 游戏中心 -->
+                <TabItem x:Name="TabItemMyGame" IsSelected="True">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Vertical" Background="Transparent">
+                            <Image x:Name="Image" Source="Images/TabControl/MyGame_Normal.png"/>
+                            <TextBlock x:Name="TextBlockName" Text="游戏中心" FontSize="18" HorizontalAlignment="Center" Margin="0 2 0 5"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <control:GameCenter x:Name="GameCenterContent"/>
+                    </TabItem.Content>
+                    
+                </TabItem>
+                
+                <!-- 游戏统计 -->
+                <TabItem x:Name="TabItemGameStatics">
+                    <TabItem.Header>
+                        <CheckBox Style="{StaticResource GameStaticsCheckBoxStyle}" IsChecked="{Binding ElementName=TabItemGameStatics, Path=IsSelected, Mode=TwoWay}"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <control:GameStatics x:Name="GameStaticsContent"/>
+                    </TabItem.Content>
+                    
+                </TabItem>
+                
+                <!-- 游戏监测 -->
+                <TabItem x:Name="TabItemGameDetect">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Vertical" Background="Transparent">
+                            <Image Source="Images/TabControl/GameDetect_Normal.png"/>
+                            <TextBlock Text="游戏监测" FontSize="18" HorizontalAlignment="Center" Margin="0 2 0 5"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+                
+            </TabControl>
+            
+            <!-- 状态栏 -->
+            <Grid Grid.Row="2" Height="20" Background="#FFCCCCCC">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock x:Name="TextBlockVersionInfo" Text="游戏助手当前版本1.0.0" FontSize="14" FontFamily="微软雅黑" VerticalAlignment="Center" Margin="10 0"/>
+                
+                <StackPanel x:Name="StackPanelToolbar" Grid.Column="2" Orientation="Horizontal" >
+                    <Button x:Name="ButtonSetting" Width="72" Style="{StaticResource SettingBtnStyle}"/>
+                    <Button x:Name="ButtonDownload" Width="72"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+    </Border>
+    
+    
+</Window>

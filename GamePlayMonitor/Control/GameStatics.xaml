@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="GamePlayMonitor.Control.GameStatics"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:commonControls="clr-namespace:GamePlayMonitor.Control.CommonControls"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Themes/Generic.xaml"/>
+    </UserControl.Resources>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- 游戏时间总数 -->
+        <TextBlock x:Name="TextBlockSummary" Text="玩过2个游戏，游戏时间45天" FontSize="14" Foreground="SteelBlue" Margin="5"/>
+        
+        <!-- 列表统计 -->
+        <DataGrid x:Name="DataGridGameStatics" Grid.Row="1" DataContext="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image x:Name="ImageIcon" Source="{Binding GameIconPath}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="游戏名称">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="TextBlockGameName" Text="{Binding GameName}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="总游戏时间">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="TextBlockTotalTime" Text="{Binding GameTotalTime}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="上次游戏时间">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="TextBlockLastTime" Text="{Binding GameLastTime}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="运行次数">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="TextBlockRunTimes" Text="{Binding GameRunTimes}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- 可视化统计 -->
+        <StackPanel x:Name="StackPanelOperation" Grid.Row="2" Orientation="Horizontal" Height="60" >
+            <commonControls:ImageButtonControl x:Name="ButtonEditGame" Text="编辑游戏" ImageSource="../Images/Button/EditGame.png"/>
+            <commonControls:ImageButtonControl x:Name="ButtonViewPie" Text="查看饼图" ImageSource="../Images//Button/ViewPie.png"/>
+            <commonControls:ImageButtonControl x:Name="ButtonViewGraph" Text="查看历史记录" ImageSource="../Images/Button/ViewHistory.png"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,71 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--最小化按钮-->
+    <Style TargetType="{x:Type Button}" x:Key="MinBtnStyle">
+        <Setter Property="ToolTip" Value="最小化"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image x:Name="btnImg" Source="../Images/TitleBar/Minimize.png" Width="20" Height="20"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="btnImg" Value="../Images/TitleBar/Minimize_Hover.png"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Source" TargetName="btnImg" Value="../Images/TitleBar/Minimize_Press.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--关闭按钮-->
+    <Style TargetType="{x:Type Button}" x:Key="CloseBtnStyle">
+        <Setter Property="ToolTip" Value="关闭"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image x:Name="btnImg" Source="/Images/TitleBar/Close.png" Width="20" Height="20"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="btnImg" Value="../Images/TitleBar/Close_Hover.png"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Source" TargetName="btnImg" Value="../Images/TitleBar/Close_Press.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- 设置按钮样式 -->
+    <Style TargetType="{x:Type Button}" x:Key="SettingBtnStyle">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ToolTip" Value="设置"/>
+        <Setter Property="Background" Value="Transparent"/>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="BorderContent" BorderThickness="1" BorderBrush="Transparent">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="btnImg" Source="/Images/settig.png" Width="24" Height="18" Margin="5 0"/>
+                            <TextBlock x:Name="txtSetting" Text="设置" FontSize="12" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" TargetName="txtSetting" Value="Blue"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="BorderContent" Value="Orchid"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

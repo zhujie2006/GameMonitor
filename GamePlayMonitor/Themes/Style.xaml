@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- 主窗口Border -->
+    <Style TargetType="{x:Type Border}" x:Key="WindowBorderStyle">
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Opacity" Value="1"/>
+        
+        <Setter Property="Background">
+            <Setter.Value>
+                <VisualBrush TileMode="Tile" >
+                    <VisualBrush.Visual>
+                        <Image Source="../Images/background.jpg"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+    
+    
+</ResourceDictionary>
