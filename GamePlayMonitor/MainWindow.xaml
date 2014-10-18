@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:control="clr-namespace:GamePlayMonitor.Control"
         Loaded="MainWindow_OnLoaded" MouseDown="MainWindow_OnMouseDown"
-        Title="MainWindow" Height="600" Width="800" Style="{DynamicResource ShadowWinStyle}">
+        Title="MainWindow" Height="602" Width="900" Style="{DynamicResource ShadowWinStyle}">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,7 +12,6 @@
                 <ResourceDictionary Source="Themes/Style.xaml"/>
                 <ResourceDictionary Source="Themes/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="Themes/TabControlStyle.xaml"/>
-                <ResourceDictionary Source="Themes/CheckBoxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         
@@ -47,10 +46,10 @@
             <!-- 内容 -->
             <TabControl x:Name="TabControlMain" Style="{StaticResource TabControlStyle}" Grid.Row="1">
                 <!-- 游戏中心 -->
-                <TabItem x:Name="TabItemMyGame" IsSelected="True">
+                <TabItem x:Name="TabItemMyGame" IsSelected="True" Style="{StaticResource TabItemStyle}">
                     <TabItem.Header>
                         <StackPanel Orientation="Vertical" Background="Transparent">
-                            <Image x:Name="Image" Source="Images/TabControl/MyGame_Normal.png"/>
+                            <Image x:Name="ImageCenter" Source="Images/TabControl/MyGame_Normal.png"/>
                             <TextBlock x:Name="TextBlockName" Text="游戏中心" FontSize="18" HorizontalAlignment="Center" Margin="0 2 0 5"/>
                         </StackPanel>
                     </TabItem.Header>
@@ -61,9 +60,13 @@
                 </TabItem>
                 
                 <!-- 游戏统计 -->
-                <TabItem x:Name="TabItemGameStatics">
+                <TabItem x:Name="TabItemGameStatics" Style="{StaticResource TabItemStyle}">
                     <TabItem.Header>
-                        <CheckBox Style="{StaticResource GameStaticsCheckBoxStyle}" IsChecked="{Binding ElementName=TabItemGameStatics, Path=IsSelected, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Vertical" Background="Transparent">
+                            <Image x:Name="ImageStatics" Source="Images/TabControl/Statics_Normal.png"/>
+                            <TextBlock x:Name="TextBlockStatics" Text="游戏统计" FontSize="18" HorizontalAlignment="Center" Margin="0 2 0 5"/>
+                        </StackPanel>
+                        <!--CheckBox Style="{StaticResource GameStaticsCheckBoxStyle}" IsChecked="{Binding ElementName=TabItemGameStatics, Path=IsSelected, Mode=TwoWay}"/-->
                     </TabItem.Header>
                     <TabItem.Content>
                         <control:GameStatics x:Name="GameStaticsContent"/>
@@ -72,13 +75,16 @@
                 </TabItem>
                 
                 <!-- 游戏监测 -->
-                <TabItem x:Name="TabItemGameDetect">
+                <TabItem x:Name="TabItemGameDetect" Style="{StaticResource TabItemStyle}">
                     <TabItem.Header>
                         <StackPanel Orientation="Vertical" Background="Transparent">
                             <Image Source="Images/TabControl/GameDetect_Normal.png"/>
                             <TextBlock Text="游戏监测" FontSize="18" HorizontalAlignment="Center" Margin="0 2 0 5"/>
                         </StackPanel>
                     </TabItem.Header>
+                    <TabItem.Content>
+                        <control:GameDetect x:Name="GameDetectContent" />
+                    </TabItem.Content>
                 </TabItem>
                 
             </TabControl>

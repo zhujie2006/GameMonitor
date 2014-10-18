@@ -7,7 +7,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../Themes/TabControlStyle.xaml"/>
     </UserControl.Resources>
-    <TabControl x:Name="TabControlContent" Style="{StaticResource TabControlVerticalStyle}">
+    <TabControl x:Name="TabControlContent" Style="{StaticResource TabControlVerticalStyle}" Background="White">
         <TabControl.ItemTemplateSelector>
             <DataTemplateSelector>
                 

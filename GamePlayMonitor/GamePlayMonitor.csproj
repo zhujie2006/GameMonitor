@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\GameDetect.xaml.cs">
+      <DependentUpon>GameDetect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\GameStatics.xaml.cs">
       <DependentUpon>GameStatics.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,10 @@
     <Compile Include="Utils\DesHelper.cs" />
     <Compile Include="Utils\DynamicPinvoke.cs" />
     <Compile Include="Utils\SQLiteHelper.cs" />
+    <Page Include="Control\GameDetect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\GameStatics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,7 +173,6 @@
     <Resource Include="Images\main.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\settig.png" />
     <Resource Include="Images\TitleBar\Close.png" />
     <Resource Include="Images\TitleBar\Close_Hover.png" />
     <Resource Include="Images\TitleBar\Close_Press.png" />
@@ -192,6 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Button\ViewHistory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

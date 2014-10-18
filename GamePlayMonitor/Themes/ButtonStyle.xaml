@@ -51,7 +51,7 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="BorderContent" BorderThickness="1" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <Image x:Name="btnImg" Source="/Images/settig.png" Width="24" Height="18" Margin="5 0"/>
+                            <Image x:Name="btnImg" Source="/Images/setting.png" Width="24" Height="18" Margin="5 0"/>
                             <TextBlock x:Name="txtSetting" Text="设置" FontSize="12" VerticalAlignment="Center" />
                         </StackPanel>
                     </Border>
